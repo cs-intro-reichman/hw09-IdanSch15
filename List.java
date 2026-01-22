@@ -42,15 +42,18 @@ public class List {
     
     /** GIVE Textual representation of this list. */
     public String toString() {
-        String str = "";
+        if (size == 0) return "()";
+        StringBuilder str = new StringBuilder("(");
         Node current = first;
         while (current != null) {
-            str += current.cp.toString() + " ";
-
-            current = current.next;
+            str.append(current.cp.toString());
+        if (current.next != null) {
+            str.append(" "); 
         }
-        return str;
+        current = current.next;
     }
+    return str.append(")").toString();
+}
 
     /** Returns the index of the first CharData object in this list
      *  that has the same chr value as the given char,
